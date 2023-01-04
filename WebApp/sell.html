@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>SellerPage</title>
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+
+        <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+        <style>
+
+            body{
+                margin: 0px;
+                padding: 0px;
+                height: 140vh;
+                background:linear-gradient(90deg, rgb(210, 164, 95) , rgb(32, 82, 93));
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 
+                Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            }
+            .header_section{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            header{
+                text-align: center;
+                background:linear-gradient(90deg, rgb(210, 164, 95) , rgb(32, 82, 93));
+                width: 100%;
+                overflow: hidden;
+            }
+            p{
+                position: relative;
+                margin-top: -5px;
+                margin-bottom: 30px;
+                color: rgb(223, 221, 221);
+                left: 50%;
+                transform: translateX(-50%);
+                width: 40%;
+                min-width: 300px;
+                text-align: center;
+            }
+            img{
+                width: 300px;
+                height: auto;
+            }
+            h1{
+                color: rgb(1, 57, 36);
+                font-size: 23px;
+                margin-bottom: 20px;
+            }
+            .container{
+                width: 100%;
+                position: relative;
+                color: rgb(242, 242, 242);
+            }
+            .FoodForm,.AccountForm{
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                background: none;
+                margin-top: 20px;
+            }
+            label{
+                position: absolute;
+                padding-left: 5px;
+                font-size: 17px;
+                color: rgb(255, 251, 251);
+                left:0px;
+                top: -50%;
+                transform: translateY(-100%);
+                transition: 0.5s;
+            }
+            form div input{
+                position: absolute;
+                border: none;
+                top: -50%;
+                color: rgb(242, 242, 242);
+                transform: translateY(-100%);
+                padding-left: 5px;
+                font-size: 18px;
+                background: transparent;
+                outline: none;
+                height: 30px;
+                width: 100%;
+            }
+            form div{
+                position: relative;
+                margin: 80px 0px;
+                border-width: 1px;
+                width: 80%;
+                border-bottom-style: groove;
+                border-bottom-color: rgb(242, 242, 242);
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            form div input:focus ~ label,form div input:valid ~ label{
+                top: -30px;
+                color: rgb(1, 57, 36);
+            }
+            #button{
+                position: relative;
+                margin-bottom: 40px;
+                width: 80%;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            section #Send{
+                width: 100%;
+                height: 40px;
+                border-radius: 30px;
+                margin-bottom: 40px;
+                background-color:  rgb(229, 229, 229);
+                color: rgb(50, 50, 50);
+                font-size: 20px;
+                outline: none;
+                border: none;
+                cursor: pointer;
+            }
+            section #Send:hover{
+                background-color:  rgb(174, 174, 174);
+            }
+        </style>
+    </head>
+
+    <body onclick="hide_keyboard()">
+
+        <div class="header_section">
+            <header>
+                <h1 style="font-size: 26px;">🍟 Sell Your Food 🍟</h1>
+                <img src="imP6EkukcLQNniL-Food-Plate-Top-View-Non-Veg-PNG.png" alt="food">
+                <p class="headerdetail">🟣 To sell your food enter your order details in the form below and then other users can see your order 🟣</p>
+            </header>
+        </div>
+        <div class="devivder" style="height: 2px;background-color: black;width: 100%;"></div>
+
+
+        <seaction class="container">
+
+            <section id="FoodSection">
+                <form method="post">
+
+                    <section class="FoodDetail">
+                        <section class ="FoodForm">
+                            <h1>🥙 Food Form 🥙</h1>
+                            <span style="height: 2px;width: 200px;background-color: rgb(214, 214, 214);"></span >
+                        </section>
+                    </section>
+
+                    <div>
+                        <input id = "Food" type="text" value="" autocomplete="off" required>
+                        <label for="">Food⭐️</label>
+                    </div>
+                    <div>
+                        <input id = "Quantity" type="tel" value="" autocomplete="off" required>
+                        <label for="">Quantity⭐️</label>
+                    </div> 
+                    <div>
+                        <input id = "Price" type="tel" value="" autocomplete="off" required>
+                        <label  for="">Price(toman)⭐️</label>
+                    </div>
+                    <div>
+                        <input id="Description" type="text" value="" autocomplete="off" required>
+                        <label for="">Description⭐️</label>
+                    </div>
+
+                <section id="AccountSection">
+                    <section class="AccountDetail">
+                        <section class ="AccountForm">
+                            <h1>🧾 Account 🧾</h1>
+                            <span style="height: 2px;width: 200px;background-color: rgb(214, 214, 214);"></span >
+                        </section>
+                    </section>
+
+                    <div>
+                        <input id = "Username" type="text" value="" autocomplete="off" required>
+                        <label for="">Username⭐️</label>
+                    </div>
+                    <div>
+                        <input id = "Password" type="password" value="" autocomplete="off" required>
+                        <label for="">Password⭐️</label>
+                    </div> 
+                    <section id="button">
+                        <input type="submit" value="Send" id="Send" onclick="send_data()" >
+                 </section>
+                </form>
+
+            </section>
+            
+            <script>
+                function hide_keyboard(){
+                    if(document.activeElement !=document.getElementById('Food')||
+                     document.activeElement !=document.getElementById('Quantity')||
+                     document.activeElement !=document.getElementById('Price')
+                     ||document.activeElement !=document.getElementById('Description'))
+                    document.getElementById("Food").blur
+                    document.getElementById("Quantity").blur
+                    document.getElementById("Price").blur
+                    document.getElementById("Description").blur
+                }
+            </script>
+
+            <script>
+                Telegram.WebApp.ready();
+                keys = ['Food','Quantity','Price','Description','Username','Password']
+                values = {'Food':'','Quantity':'','Price':'','Description':'','Username':'','Password':'','method':'sell'}
+                function send_data(){
+                    for (var key in keys) {
+                    if(document.getElementById(keys[key]).value == ""){
+                            return 
+                        }
+                    else
+                    values[keys[key]] = document.getElementById(keys[key]).value;
+                }
+                
+                Telegram.WebApp.sendData(JSON.stringify(values));
+                Telegram.WebApp.close();
+                }
+            </script>
+
+        </seaction>
+        
+    </body>
+</html>

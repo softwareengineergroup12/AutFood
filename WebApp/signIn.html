@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+    <header>
+        <title> Login </title>
+        <meta charset="utg-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    </header>
+
+    <style>
+
+        body{
+            background-image: url("gray-grunge-surface-wall-texture-background.jpg");
+            background-size:cover;
+            background-repeat: no-repeat;
+            height: 100vh;
+            font-family: sans-serif;
+        }
+
+        .container{
+            position: absolute;  
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            width: 350px;
+            background:rgb(219, 180, 152);
+            opacity: 0.8;
+            border-radius: 18px;
+        }
+        form{
+            margin: 10px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h1{
+            text-align: center;
+            font-size: 35px;
+            margin: 40px 0px;
+            color: rgb(18, 85, 114);
+        }
+        form div{
+            width: 90%;
+            position: relative;
+            height: auto;
+            margin: 40px 0px;
+            border-bottom: 2px solid silver;
+        }
+        form div label{
+            position: absolute;
+            font-size: 16px;
+            color: rgb(97, 97, 97);
+            padding: 5px 5px;
+            top: -50%;
+            transform: translateY(-100%);
+            transition: 0.5s;
+            pointer-events: none;
+        }
+        form div input{
+            position: absolute;
+            padding: 0px 5px;
+            font-size: 18px;
+            top: -50%;
+            transform: translateY(-80%);
+            background-color: transparent;
+            color: rgb(16, 67, 85);
+            width: 100%;
+            height: 40px;
+            border: none;
+            outline: none;
+        }
+        form div input:focus ~ label,form div input:valid ~ label{
+            color: rgb(10, 55, 55);
+            top: -24px;
+        } 
+        form section{
+            width: 90%;
+            display: flex;
+            justify-content: center;
+            padding-bottom: 10px;
+        } 
+        form section #submit{
+            width: 100%;
+            height: 35px;
+            border-radius: 50px;
+            background-color: rgb(32, 105, 162);
+            color: aliceblue;
+            font-weight: 600;
+            font-size: 20px;
+            cursor: pointer;
+            outline: none;
+            border: none;
+        }
+        form section #submit:hover{
+            background-color: #0a446a;
+            color: bisque;
+        }  
+
+
+    </style>
+
+    <body style="margin: 0px; padding: 0px; box-sizing: border-box;" id="body" onclick="hide_keyboard()">
+        
+        <section class="container" id="container">
+            <div style="display: flex;justify-content: center;height: 200px;margin-bottom: -30px;">
+                <img style="width: 200px;height: auto;" src="imP6EkukcLQNniL-Food-Plate-Top-View-Non-Veg-PNG.png">
+            </div>
+            <h1>Login</h1>
+            <form  method="get" class="Form">
+            
+                
+                <div>
+                    <input type="text" id="username" value="" autocomplete="off" onfocus="responsiveInput()" onblur="resetInput()" required>
+                    <label class="username">Username</label>
+                    <span style="width: 100%;height: 2px;background-color: rgb(2, 94, 155); z-index: 1;position: absolute;"></span>
+                    
+                </div>
+
+                <div>
+                    <input type="password" id="password" value="" autocomplete="off" onfocus="responsiveInput()" onblur="resetInput()" required>
+                    <label class="password">Password</label>
+                    <span style="width: 100%;height: 2px;background-color: rgb(2, 94, 155); z-index: 1;position: absolute;"></span>
+                </div>
+
+                <section class="button">
+                    <input type="submit" id="submit" value="Login" onclick="send_data()">
+                </section>    
+
+            </form>
+
+            <script>
+                function hide_keyboard(){
+                    if(document.activeElement !=document.getElementById("username")||
+                     document.activeElement !=document.getElementById("password"))
+                    document.getElementById("username").blur
+                    document.getElementById("password").blur
+                    document.getElementById("submit").blur
+                }
+            </script>
+
+            <script>
+                function responsiveInput(){
+                    document.getElementById('container').style.transition='0.4s'
+                    document.getElementById('container').style.top = '41%'
+
+                }
+
+                function resetInput(){
+                    document.getElementById('container').style.transition='0.4s'
+                    document.getElementById('container').style.top = "50%"
+
+                }
+            </script>
+            
+            
+            <script>
+                Telegram.WebApp.ready();
+                keys = ['username','password']
+                values = {'username':'','password':'','method':'login'}
+                function send_data(){
+                    for (var key in keys) {
+                    if(document.getElementById(keys[key]).value == ""){
+                            return 
+                        }
+                    else
+                    values[keys[key]] = document.getElementById(keys[key]).value;
+                }
+                
+                Telegram.WebApp.sendData(JSON.stringify(values));
+                Telegram.WebApp.close();
+                }
+            </script>
+
+        </section>
+
+    </body>
+
+</html>
